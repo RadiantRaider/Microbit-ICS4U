@@ -1,0 +1,22 @@
+let Starttime = 0
+input.onPinPressed(TouchPin.P0, function () {
+    if (Starttime == 0) {
+        Starttime = input.runningTime()
+        basic.showIcon(IconNames.Butterfly)
+    } else {
+        basic.pause(200)
+        basic.showLeds(`
+            . . . . .
+            . # # # .
+            . . . . .
+            . # # # .
+            . . . . .
+            `)
+        basic.showNumber((input.runningTime() - Starttime) / 1000)
+        Starttime = 0
+    }
+})
+Starttime = 0
+basic.forever(function () {
+	
+})
