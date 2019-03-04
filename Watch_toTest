@@ -2,9 +2,9 @@ let rounded = 0
 let time = ""
 let minutes = 0
 let hours = 0
+let Starttime = 0
 let ampm = false
 let adjust = 0
-let Starttime = 0
 input.onPinPressed(TouchPin.P0, function () {
     if (Starttime == 0) {
         Starttime = input.runningTime()
@@ -18,7 +18,7 @@ input.onPinPressed(TouchPin.P0, function () {
             . # # # .
             . . . . .
             `)
-        rounded = (input.runningTime() - Starttime) / 1000
+        rounded = Math.round((input.runningTime() - Starttime) / 1000)
         basic.showNumber(rounded)
         Starttime = 0
     }
@@ -37,7 +37,6 @@ input.onPinPressed(TouchPin.P1, function () {
     time = "" + adjust
     time = "" + time + ":"
     time = "" + time + minutes / 10
-    time = "" + time + minutes % 10
     if (adjust) {
         if (hours > 11) {
             time = "" + time + "PM"
